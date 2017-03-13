@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20150108011628) do
     t.boolean  "over_21"
     t.text     "reason"
     t.string   "workflow_state"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "accepts_background_check", default: false, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
 end

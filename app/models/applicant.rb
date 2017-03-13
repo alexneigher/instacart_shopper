@@ -5,4 +5,6 @@ class Applicant < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name, :email, :phone, :phone_type, :workflow_state, :region
   validates_uniqueness_of :email, :phone
+
+  scope :initial_workflow -> { where(workflow_state: :applied) }
 end

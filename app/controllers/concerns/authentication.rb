@@ -2,17 +2,17 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
-    helper_method :current_user
+    helper_method :current_applicant
   end
 
   protected
-    def current_user=(user)
-      session[:user_id] = user ? user.id : nil
+    def current_applicant=(applicant)
+      session[:applicant_email] = applicant ? applicant.email : nil
     end
 
     def current_user
-      if session[:user_id]
-        @current_user ||= User.find_by(id: session[:user_id])
+      if session[:applicant_email]
+        @current_user ||= Applicant.find_by_email(session[:applicant_email])
       end
     end
 end

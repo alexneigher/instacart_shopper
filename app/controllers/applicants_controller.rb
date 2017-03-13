@@ -1,10 +1,15 @@
 class ApplicantsController < ApplicationController
   def new
-    # your code here
+    @applicant = Applicant.new
   end
 
   def create
-    # your code here
+    @applicant = Applicant.initial_workflow.create(applicant_params)
+    if @applicant.valid?
+      render_success_or_background_check
+    else
+      render :new
+    end
   end
 
   def update
@@ -12,7 +17,31 @@ class ApplicantsController < ApplicationController
   end
 
   def show
-    redirect_to new_applicant_path and return unless current_user
-    raise 'show yeah'
+    redirect_to new_applicant_path and return unless current_applicant
+    @applicant = current_applicant
+    render_success_or_background_check
   end
+
+  private
+
+    def applicant_params
+      params.require(:applicant).permit(
+        :first_name
+        :last_name,
+        :region,
+        :phone,
+        :email,
+        :phone_type,
+        :source,
+        :accepts_background_check
+      )
+    end
+
+    def render_success_or_background_check
+      if @applicant.accepts_background_check?
+        render :show
+      else
+        render :complete_background_check_request
+      end
+    end
 end

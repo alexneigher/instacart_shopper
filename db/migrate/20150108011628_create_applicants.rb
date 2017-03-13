@@ -11,6 +11,7 @@ class CreateApplicants < ActiveRecord::Migration
       t.boolean :over_21
       t.text :reason
       t.string :workflow_state
+      t.boolean :accepts_background_check, null: false, default: false
 
       t.timestamps null: false
     end

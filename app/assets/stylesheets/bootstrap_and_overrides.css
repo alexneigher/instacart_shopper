@@ -4,3 +4,9 @@
   Static version of css will use Glyphicons sprites by default
   =require twitter-bootstrap-static/sprites
 */
+
+.branded-logo{
+  max-width: 100%;
+  margin:0 0 50px;
+}
+

@@ -16,5 +16,9 @@
       = render 'layouts/navigation'
 
     %main{role: 'main'}
-      = render 'layouts/messages'
-      = yield
+      .container
+        .row
+          .col-md-8.col-md-offset-2
+            = render 'layouts/messages'
+            = image_tag "logo", class: 'branded-logo'
+            = yield
