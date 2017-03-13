@@ -6,6 +6,7 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.initial_workflow.create(applicant_params)
     if @applicant.valid?
+      self.current_applicant = @applicant
       render_success_or_background_check
     else
       render :new
@@ -13,7 +14,14 @@ class ApplicantsController < ApplicationController
   end
 
   def update
-    # your code here
+    @applicant = Applicant.find(params[:id])
+    @applicant.update(applicant_params)
+    flash[:notice] = "All set! You'll hear from us soon"
+    render :show
+  end
+
+  def index
+    redirect_to new_applicant_path
   end
 
   def show
@@ -26,7 +34,7 @@ class ApplicantsController < ApplicationController
 
     def applicant_params
       params.require(:applicant).permit(
-        :first_name
+        :first_name,
         :last_name,
         :region,
         :phone,

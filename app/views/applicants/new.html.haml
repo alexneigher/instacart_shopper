@@ -1,6 +1,8 @@
 .panel.panel-default
   .panel-body
+
     = form_for @applicant, url: applicants_path, method: :post do |f|
+      = render partial: 'shared/validations', locals: {resource: f.object}
       .form-group
         .row
           .col-sm-6
@@ -16,7 +18,7 @@
             = f.text_field :email, class: 'form-control', placeholder: 'e@mail.com'
           .col-sm-6
             %label Region
-            = select_tag :region, options_for_select(Applicant::REGIONS, @applicant.region), class: 'form-control'
+            = f.select :region, options_for_select(Applicant::REGIONS, @applicant.region),{}, class: 'form-control'
       .form-group
         .row
           .col-sm-6
@@ -24,7 +26,7 @@
             = f.text_field :phone, class: 'form-control', placeholder: 'e@mail.com'
           .col-sm-6
             %label Phone Type
-            = select_tag :phone_type, options_for_select(Applicant::PHONE_TYPES, @applicant.region), class: 'form-control'
+            = f.select :phone_type, options_for_select(Applicant::PHONE_TYPES, @applicant.region),{}, class: 'form-control'
 
       .form-group
         .row

@@ -1,0 +1,6 @@
+- return unless resource.errors.any?
+%div.alert.alert-warning
+  - resource.errors.each do |key, msg|
+    %div
+      = key.to_s.humanize
+      = msg

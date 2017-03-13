@@ -1,0 +1,11 @@
+.panel.panel-default
+  .panel-body
+    %h4
+      = @applicant.full_name
+      = application_status_indicator(@applicant)
+    %p
+      = @applicant.phone
+    %p
+      = @applicant.region
+
+=@applicant.inspect
