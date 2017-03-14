@@ -1,0 +1,25 @@
+= render partial: 'shared/validations', locals: {resource: f.object}
+.form-group
+  .row
+    .col-sm-6
+      %label First Name
+      = f.text_field :first_name, class: 'form-control', placeholder: 'Insta'
+    .col-sm-6
+      %label Last Name
+      = f.text_field :last_name, class: 'form-control', placeholder: 'Carter'
+.form-group
+  .row
+    .col-sm-6
+      %label Email
+      = f.text_field :email, class: 'form-control', placeholder: 'e@mail.com'
+    .col-sm-6
+      %label Region
+      = f.select :region, options_for_select(Applicant::REGIONS, @applicant.region),{}, class: 'form-control'
+.form-group
+  .row
+    .col-sm-6
+      %label Phone Number
+      = f.text_field :phone, class: 'form-control', placeholder: 'e@mail.com'
+    .col-sm-6
+      %label Phone Type
+      = f.select :phone_type, options_for_select(Applicant::PHONE_TYPES, @applicant.region),{}, class: 'form-control'

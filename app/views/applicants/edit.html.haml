@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-body
+
+    = form_for @applicant, url: applicant_path(@applicant), method: :put do |f|
+      = render partial: 'shared/applicant_form', locals: {f: f}
+
+      .form-group
+        .row
+          .col-sm-12
+            = f.submit 'Update', class: 'btn btn-block btn-success btn-lg'

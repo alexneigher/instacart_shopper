@@ -15,9 +15,16 @@ class ApplicantsController < ApplicationController
 
   def update
     @applicant = Applicant.find(params[:id])
-    @applicant.update(applicant_params)
-    flash[:notice] = "All set! You'll hear from us soon"
-    render :show
+    if @applicant.update(applicant_params)
+      flash[:notice] = "All set! You'll hear from us soon"
+      render :show
+    else
+      render :edit
+    end
+  end
+
+  def edit
+    @applicant = Applicant.find(params[:id])
   end
 
   def index
