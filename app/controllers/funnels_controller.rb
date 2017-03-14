@@ -1,6 +1,6 @@
 class FunnelsController < ApplicationController
   def index
-    @funnel = {} # your code goes here
+    @funnel = FunnelDataService.new(params).perform
 
     respond_to do |format|
       format.html { @chart_funnel = formatted_funnel }
