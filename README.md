@@ -1,24 +1,23 @@
-# README
+## Mock Shopper App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A basic implementation of a shopper signup workflow, with some json endpoints.
 
-Things you may want to cover:
+### Setup
 
-* Ruby version
+```
+# Clone the project:
+git clone git@github.com:alexneigher/shopper.git
 
-* System dependencies
+# Install the gems
+bundle install
 
-* Configuration
+# Precompile the assets
+rake assets:precompile
 
-* Database creation
+# Create the database
+rake db:setup
+rake db:seed
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Run the app
+rails s
+```
