@@ -97,6 +97,7 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
+    novus-nvd3-rails (1.8.5)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -205,6 +206,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  novus-nvd3-rails
   pry
   puma (~> 3.0)
   rails (~> 5.0.2)
