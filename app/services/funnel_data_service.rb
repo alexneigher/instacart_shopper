@@ -1,8 +1,8 @@
 class FunnelDataService
 
   def initialize(params = {})
-    @start_date = parse_user_date(params[:start_date])
-    @end_date = parse_user_date(params[:end_date])
+    @start_date = parse_user_date(params[:start_date]) || 1.month.ago.beginning_of_week
+    @end_date = parse_user_date(params[:end_date]) || Date.current.end_of_week
   end
 
 
@@ -14,7 +14,8 @@ class FunnelDataService
       beginning_of_range = t.beginning_of_week.strftime('%Y-%m-%d')
       end_of_range = t.end_of_week.strftime('%Y-%m-%d')
 
-      applicants_in_range = applicants.select{ |a| a.created_at > beginning_of_range && a.created_at < end_of_range}
+      applicants_in_range = applicants
+        .select{ |a| a.created_at >= beginning_of_range && a.created_at <= end_of_range}
 
       data["#{beginning_of_range}-#{end_of_range}"] = workflow_state_count_hash(applicants_in_range)
 
